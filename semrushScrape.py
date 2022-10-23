@@ -62,9 +62,9 @@ def LoadArticle():
             except:
                 pass
             time.sleep(5)
-            article = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]")))
+            article = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]")))
             print("running!")
-            Head = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]/h1")))
+            Head = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]/h1")))
             print(Head.text)
             print(enumerate(x))
             outSheet.write(i+1,0,Head.text)
@@ -79,7 +79,7 @@ def LoadArticle():
             for imgs in img:
                 print(imgs.get_attribute('src'))
                 outSheet.write(i+1 ,2,imgs.get_attribute('src'))
-            time.sleep(30)
+            time.sleep(10)
         outWorkbook.close()
             # keywords2 = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]")))
             # keywords2.send_keys(Keys.CONTROL, 'a')
