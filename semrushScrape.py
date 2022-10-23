@@ -27,11 +27,8 @@ options.add_argument("user-data-dir=C:\chromeprofile") #Path to your chrome prof
 driver = webdriver.Chrome(ChromeDriverManager().install())
 df = pd.read_excel('adata.xlsx', 
                    sheet_name=['Sheet1','Sheet2'])
-# https://www.semrush.com/seo-content-template/
+
 dt = 1
-# sht3 = df.get('Sheet2')
-# row = len(sht3.index)
-# print(row)
 def saveContent(title, contents, num):
     outSheet.write(num,0,title)
     outSheet.write(num,1,contents)
@@ -43,15 +40,6 @@ def LoadArticle():
     WebDriverWait(driver, 220).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[3]/section[1]/div[2]/div[2]/div[2]/div[2]/a[2]/button"))).click()
     WebDriverWait(driver, 220).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[5]/div[2]/button[2]"))).click()
     time.sleep(5)
-    # /html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]
-    # try:
-    #     keywords = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]")))
-    #     keywords.send_keys(Keys.CONTROL, 'a')
-    #     keywords.send_keys(Keys.BACKSPACE)
-    # except:
-    #     print("error!")
-    #     pass
-    # time.sleep(3)
     with open("link.txt", "r") as f:
         for i,x in enumerate(f.readlines()):
             print(x)
@@ -79,10 +67,6 @@ def LoadArticle():
             outSheet.write(i+1,0,Head.text)
             outSheet.write(i+1,1,article.text)
             innerSheet.write(i+1,0,Head.text)
-            innerSheet.write(i+1,1,article.get_attribute('innerHTML'))
-            # print(i)
-            # print(article.get_attribute('innerHTML'))
-            # print(article.text)
             time.sleep(2)
             img=driver.find_elements(By.XPATH, "//div[contains(@class,'ql-editor')]//img")
             for imgs in img:
@@ -94,8 +78,5 @@ def LoadArticle():
             newSheet.write(nilai+1 ,1,Head.text)
             time.sleep(3)
         outWorkbook.close()
-            # keywords2 = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div/div/div[6]/div/div/div[2]/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]")))
-            # keywords2.send_keys(Keys.CONTROL, 'a')
-            # keywords2.send_keys(Keys.DELETE)
 
 LoadArticle()
