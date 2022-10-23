@@ -21,7 +21,7 @@ innerSheet.write("A1","Title")
 innerSheet.write("B1","content")
 options = webdriver.ChromeOptions() 
 options.add_argument("user-data-dir=C:\chromeprofile") #Path to your chrome profile
-driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install())
 # https://www.semrush.com/seo-content-template/
 dt = 1
 def saveContent(title, contents, num):
