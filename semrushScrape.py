@@ -25,8 +25,6 @@ newSheet.write("A1","Image")
 options = webdriver.ChromeOptions() 
 options.add_argument("user-data-dir=C:\chromeprofile") #Path to your chrome profile
 driver = webdriver.Chrome(ChromeDriverManager().install())
-df = pd.read_excel('adata.xlsx', 
-                   sheet_name=['Sheet1','Sheet2'])
 
 dt = 1
 def saveContent(title, contents, num):
