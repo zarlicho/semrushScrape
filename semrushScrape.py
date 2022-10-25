@@ -9,6 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import service
 import xlsxwriter
 import pandas as pd
 
@@ -23,8 +24,9 @@ innerSheet.write("A1","Title")
 innerSheet.write("B1","content")
 newSheet.write("A1","Image")
 options = webdriver.ChromeOptions() 
+srv = Service(ChromeDriverManager().install()) 
 options.add_argument("user-data-dir=C:\chromeprofile") #Path to your chrome profile
-driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=srv)
 
 dt = 1
 def saveContent(title, contents, num):
