@@ -67,6 +67,7 @@ def LoadArticle():
             outSheet.write(i+1,0,Head.text)
             outSheet.write(i+1,1,article.text)
             innerSheet.write(i+1,0,Head.text)
+            innerSheet.write(i+1,1,article.get_attribute('innerHTML'))
             time.sleep(2)
             img=driver.find_elements(By.XPATH, "//div[contains(@class,'ql-editor')]//img")
             for imgs in img:
